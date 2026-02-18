@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import joblib
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
 
@@ -37,7 +37,7 @@ df[features] = imputer.fit_transform(df[features])
 df = df.dropna(subset=['Time_taken(min)'])
 
 # 6. Train and Save
-model = RandomForestRegressor(
+model = LinearRegression(
     n_estimators=50, 
     max_depth=10, 
     min_samples_leaf=5, 
@@ -48,4 +48,5 @@ model.fit(df[features], df['Time_taken(min)'])
 joblib.dump(model, 'delivery_model.pkl', compress=3)
 joblib.dump(le, 'label_encoder.pkl')
 joblib.dump(le.classes_, 'weather_classes.pkl')
+
 print("--- Success: Driver Model Ready! ---")
