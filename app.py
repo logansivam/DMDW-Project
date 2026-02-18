@@ -91,6 +91,7 @@ if st.session_state.submitted:
         st.info(f"✅ **Daily Goal:** Complete {total_orders} orders to earn **RM {round(total_earnings, 2)}**.")
 
     m1, m2, m3 = st.columns(3)
-    m1.metric("Peak Bonus", "Yes ✅" if is_peak else "No ❌")
+    m1.metric("Peak Hour Bonus", "Yes ✅" if is_peak else "No ❌")
     m2.metric("Target Orders", f"{total_orders}")
+
     m3.metric("Est. Total", f"RM {round(total_earnings, 2)}")
